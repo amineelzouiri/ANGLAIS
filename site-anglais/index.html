@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0d0d">
+<title>American Dream Simulator – Niko Bellic</title>
+<link rel="stylesheet" href="https://fonts.cdnfonts.com/css/pricedown" media="print" onload="this.media='all'">
+<style>
+@font-face{font-family:'PricedownLocal';src:url('fonts/pricedown.otf') format('opentype'),url('fonts/pricedown.ttf') format('truetype');font-display:swap}
+:root{
+  --bg:#0d0d0d; --card:#1a1a1a; --card2:#232323; --line:#3a3a3a;
+  --text:#ececec; --muted:#9a9a9a; --gold:#f2b632;
+  --green:#4ade80; --yellow:#facc15; --blue:#60a5fa; --red:#f87171; --purple:#c084fc;
+  --accent:var(--gold);
+  --title:'PricedownLocal','Pricedown',Impact,'Arial Black',sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;min-height:100vh;min-height:100dvh;
+  padding-bottom:max(32px,env(safe-area-inset-bottom))}
+[hidden]{display:none!important}
+.title{font-family:var(--title);letter-spacing:.04em;font-weight:400;margin:0;line-height:1.05}
+
+/* header */
+.hero{position:relative;text-align:center;padding:calc(28px + env(safe-area-inset-top)) 16px 30px;
+  background:linear-gradient(to bottom,rgba(13,13,13,.25),var(--bg)),url('images/hero.jpg') center/cover no-repeat}
+.hero h1{font-size:clamp(2rem,9vw,3.6rem);color:var(--gold);text-shadow:0 3px 0 #000,0 0 18px rgba(0,0,0,.8)}
+.hero p{margin:.5rem 0 0;color:#d6d6d6;font-style:italic;text-shadow:0 1px 4px #000}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:-6px;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.fade{animation:fade .35s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* intro */
+.intro{display:grid;gap:18px;align-items:center}
+.intro img{width:100%;max-height:210px;object-fit:contain;border-radius:10px;background:radial-gradient(circle at 50% 35%,#3a3a3a,#1a1a1a 70%)}
+.intro h2{font-size:1.7rem;color:var(--gold);margin-bottom:.6rem}
+.intro p{margin:.5rem 0}
+.muted{color:var(--muted)}
+@media(min-width:640px){.intro{grid-template-columns:240px 1fr}.intro img{max-height:none;height:100%}.card{padding:26px}}
+
+/* buttons */
+.btn{appearance:none;width:100%;display:flex;align-items:center;gap:14px;text-align:left;cursor:pointer;
+  color:#fff;font:inherit;font-size:1rem;line-height:1.35;padding:14px 16px;min-height:56px;
+  background:linear-gradient(#3b3b3b,#262626);border:2px solid #555;border-radius:10px;transition:transform .15s,border-color .15s,background .15s}
+.btn:hover{border-color:var(--gold);transform:translateY(-1px)}
+.btn:active{transform:scale(.985);background:#2d2d2d}
+.btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.btn.primary{justify-content:center;text-align:center;font-family:var(--title);font-size:1.25rem;letter-spacing:.06em;color:#111;
+  background:linear-gradient(#ffd25a,#e8a317);border-color:#ffe08a;min-height:58px}
+.btn.primary:hover{border-color:#fff}
+.letter{flex:0 0 34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#111;border:2px solid var(--gold);
+  color:var(--gold);font-family:var(--title);font-size:1.05rem}
+.options{display:grid;gap:10px;margin-top:18px}
+
+/* game */
+.progress{display:flex;justify-content:space-between;align-items:center;margin:0 2px 12px;color:var(--muted);font-size:.9rem}
+.bar{flex:1;height:6px;margin-left:14px;background:#2a2a2a;border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s}
+.q{font-size:1.18rem;margin:0;outline:none}
+@media(min-width:640px){.q{font-size:1.3rem}}
+
+/* ending */
+.ending img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;display:block;margin-bottom:16px;background:#111}
+.ending h3{font-size:clamp(1.5rem,6.4vw,2.2rem);margin-bottom:12px;color:var(--c)}
+.ending .quote{font-style:italic;color:var(--c);margin:14px 0}
+.mark{margin:18px 0;padding:14px 16px;border:2px dashed var(--c);border-radius:10px;background:rgba(255,255,255,.03)}
+.mark small{display:block;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-size:.75rem}
+.mark strong{display:block;font-family:var(--title);font-size:1.7rem;letter-spacing:.05em;color:var(--c);margin-top:2px}
+.reading{background:var(--card2);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:.95rem}
+.reading b{color:var(--gold)}
+.star{color:var(--gold);font-weight:600}
+.pill{display:inline-block;padding:4px 12px;border-radius:999px;border:2px solid var(--c);color:var(--c);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.found{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:16px 0 6px;font-size:.9rem;color:var(--muted)}
+.dots{display:flex;gap:6px}
+.dots span{width:14px;height:14px;border-radius:50%;background:#2a2a2a;border:2px solid #444}
+.dots span.on{background:var(--gold);border-color:var(--gold)}
+.row{display:grid;gap:10px;margin-top:14px}
+.secret h3{animation:shine 2s ease-in-out infinite}
+@keyframes shine{50%{text-shadow:0 0 14px var(--c)}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:26px;padding:0 16px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <h1 class="title">American Dream Simulator</h1>
+  <p>Based on GTA IV · Your choices matter</p>
+</header>
+
+<main class="wrap">
+  <section id="intro" class="card fade">
+    <div class="intro">
+      <img src="images/niko.png" alt="Niko Bellic" width="420" height="545">
+      <div>
+        <h2 class="title">Welcome to Liberty City</h2>
+        <p>After escaping the war in Eastern Europe, you arrive in Liberty City seeking fortune and a new life. Your cousin Roman promised you the American dream... but things are never that simple.</p>
+        <p class="muted"><em>Will you get rich, build a family, rule the underworld... or end up in prison, or worse?</em></p>
+        <div class="found" id="foundIntro"></div>
+        <button class="btn primary" id="startBtn" type="button">Start your journey</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="game" hidden>
+    <div class="progress"><span id="stepLabel">Choice 1</span><div class="bar"><i id="barFill"></i></div></div>
+    <div class="card fade" id="qCard">
+      <p class="q" id="qText" tabindex="-1" aria-live="polite"></p>
+      <div class="options" id="options"></div>
+    </div>
+  </section>
+
+  <section id="ending" class="card ending" hidden>
+    <img id="endImg" alt="">
+    <span class="pill" id="endVerdict"></span>
+    <h3 class="title" id="endTitle"></h3>
+    <p id="endText"></p>
+    <p class="quote" id="endQuote"></p>
+    <div class="mark"><small>Write this on the board</small><strong id="endMark"></strong></div>
+    <div class="reading"><b>The American Dream?</b> <span id="endReading"></span></div>
+    <div class="found" id="foundEnd"></div>
+    <div class="row"><button class="btn primary" id="againBtn" type="button">Play again</button></div>
+  </section>
+</main>
+
+<footer>© 2025 Jarod and Amine · presented with Clément and Vitushan · BUT1 Informatique</footer>
+
+<script>
+/* ---------- STORY DATA ---------- */
+const questions = {
+  1:{text:"Roman picks you up from the boat in his taxi. He's excited to show you around Liberty City and offers you a job driving cabs. What do you do?",
+     options:[{t:"Accept the job gratefully",n:2},{t:"Laugh in his face and tell him taxis are for losers",n:5},{t:"Ask about other opportunities",n:3},{t:"Take the wheel and show him how to really drive",n:4}]},
+  2:{text:"You start driving cabs but the pay is terrible. One night, a drunk passenger offers you $500 to drive recklessly. Do you:",
+     options:[{t:"Accept and give him the craziest ride of his life",n:"family"},{t:"Refuse and kick him out",n:6},{t:"Take his money then rob him when he passes out",n:"prison"},{t:"Drive him to a secluded area to mug him",n:"dead"}]},
+  3:{text:"Roman mentions his friend Vlad who runs a 'business'. He could introduce you. Do you:",
+     options:[{t:"Meet Vlad and hear his offer",n:7},{t:"Tell Roman you'll find your own way",n:8},{t:"Ask about legal job opportunities",n:"family"},{t:"Threaten Vlad to take over his operation",n:"dead"}]},
+  4:{text:"Your driving impresses Roman. He suggests starting a premium taxi service. Meanwhile, you notice illegal street races happening. Do you:",
+     options:[{t:"Focus on building the legitimate business",n:"rich"},{t:"Join the races for quick cash",n:"addicted"},{t:"Sabotage competitors' cabs",n:"prison"},{t:"Use the taxi to scout for robbery targets",n:"crimeboss"}]},
+  5:{text:"Roman is hurt but understands. You need money fast. How will you get it?",
+     options:[{t:"Hijack an armored truck with heavy weapons",n:9},{t:"Find underground fighting rings",n:10},{t:"Apply for construction jobs",n:"homeless"},{t:"Use your war skills for private security",n:"rich"}]},
+  6:{text:"The drunk passenger turns out to be a powerful businessman. He respects your principles and offers you a security job. Do you:",
+     options:[{t:"Accept and leave Roman's cab company",n:"rich"},{t:"Stay loyal to Roman",n:"family"},{t:"Use the job to case his business for robbery",n:"prison"},{t:"Blackmail him for more money",n:"crimeboss"}]},
+  7:{text:"Vlad turns out to be a loan shark. He offers you work collecting debts. First assignment: a single mom behind on payments. Do you:",
+     options:[{t:"Take the money forcefully",n:11},{t:"Pay her debt yourself",n:12},{t:"Convince Vlad to give her more time",n:"family"},{t:"Take her car as collateral to sell",n:"prison"}]},
+  8:{text:"You wander the streets looking for work. You see an opportunity to steal a parked sports car. Do you:",
+     options:[{t:"Steal it and sell it to a chop shop",n:"crimeboss"},{t:"Leave it and keep looking",n:3},{t:"Wait for the owner and extort him",n:"dead"},{t:"Leave a note offering your services as driver",n:"homeless"}]},
+  9:{text:"The heist goes wrong when the truck's GPS tracker alerts police. You escape but now have heat. Meanwhile, you discover Football Manager on Roman's computer. Do you:",
+     options:[{t:"Lay low and plan the next score",n:"dead"},{t:"Ignore it while analyzing sports statistics",n:13},{t:"Turn yourself in to avoid worse trouble",n:"prison"},{t:"Use your cut to bribe the cops",n:"crimeboss"}]},
+  10:{text:"You dominate the underground fights. A promoter offers you a pro MMA contract. Do you:",
+     options:[{t:"Accept and go legit",n:"rich"},{t:"Keep fighting underground for bigger cash prizes",n:"addicted"},{t:"Fix fights for gambling profits",n:"prison"},{t:"Use your rep to start a gym business",n:"family"}]},
+  11:{text:"She curses you as you leave. Later, her brother (a cop) arrests you. In jail, inmates respect your rep. Do you:",
+     options:[{t:"Run the prison gang",n:"prison"},{t:"Snitch to get reduced sentence",n:"homeless"},{t:"Study law to appeal your case",n:"rich"},{t:"Start a riot to escape",n:"dead"}]},
+  12:{text:"Vlad is amused by your softness but respects the money. He offers you more 'ethical' work. Do you:",
+     options:[{t:"Accept his new offer",n:"family"},{t:"Start your own business with Roman",n:"rich"},{t:"Take over his operation by force",n:"crimeboss"},{t:"Blackmail him with his criminal records",n:"dead"}]},
+  13:{text:"You spend days analyzing stats. Roman complains you're wasting time. Then you discover sports betting. Do you:",
+     options:[{t:"Start gambling with your heist money",n:"addicted"},{t:"Start collecting sports memorabilia, ignoring everything else",n:17},{t:"Use your knowledge to become a bookie",n:"crimeboss"},{t:"Get a job as a sports analyst",n:"rich"}]},
+  17:{text:"Your sports memorabilia collection grows enormous. Roman and friends worry about your obsession. Do you:",
+     options:[{t:"Let them handle it while you focus on sports",n:"secret"},{t:"Sell some pieces to help Roman's business",n:"family"},{t:"Steal rare items to complete your collection",n:"prison"},{t:"Open a legitimate sports memorabilia shop",n:"rich"}]}
+};
+
+const endings = {
+  rich:{mark:"Rich",title:"Ending: Rich",verdict:"Dream achieved",color:"#4ade80",img:"images/end_rich.jpg",
+    text:"Years of hard work and smart choices pay off. You own a business, a penthouse in Algonquin and enough money to never worry again. Roman tells everyone you are the American dream in person.",
+    quote:"“I came here with nothing. Now I have everything... almost.”",
+    reading:"The dream achieved. But the game shows it is the exception, not the rule."},
+  family:{mark:"Family",title:"Ending: Family",verdict:"Dream achieved",color:"#60a5fa",img:"images/end_family.jpg",
+    text:"You never became a millionaire, but you found something better. A small apartment, a steady job, and Roman's family around the table every Sunday. The city did not give you luxury, but it gave you peace.",
+    quote:"“Maybe this is the real American dream.”",
+    reading:"A modest dream: not wealth, but stability and people who love you."},
+  crimeboss:{mark:"Crime Boss",title:"Ending: Crime Boss",verdict:"Dream... at a price",color:"#fb923c",img:"images/end_crimeboss.jpg",
+    text:"You build an empire in the shadows: money, power and men who obey you. Politicians and police look the other way, because you pay them well. You have everything the dream promised, but you can never sleep with the lights off.",
+    quote:"“Everyone has a price in this city. I just paid more.”",
+    reading:"Success through crime and corruption: the dream achieved the wrong way, and it can collapse at any time."},
+  prison:{mark:"Prison",title:"Ending: Prison",verdict:"Nightmare",color:"#cbd5e1",img:"images/end_prison.jpg",
+    text:"The police finally catch up with you. The judge is not impressed and you get a long sentence. Behind the walls, you have a lot of time to think about the promises Roman made on the dock.",
+    quote:"“The only view I have of Liberty City is through a barred window.”",
+    reading:"Crime looked like a shortcut, but the system caught you: the dream stops at the prison gate."},
+  dead:{mark:"Dead",title:"Ending: Dead",verdict:"Nightmare",color:"#f87171",img:"images/end_dead.jpg",
+    text:"In Liberty City, violence always comes back. One night, someone you wronged is waiting for you. Your story ends young, far from home, and Roman has to tell your family what happened.",
+    quote:"“I came here to live, not to die in an alley.”",
+    reading:"The darkest nightmare: for some people, the American dream cost them everything."},
+  homeless:{mark:"Homeless",title:"Ending: Homeless",verdict:"Nightmare",color:"#2dd4bf",img:"images/end_homeless.jpg",
+    text:"Nothing works out. You lose your job, then your flat, and Roman cannot help you anymore. You sleep in the subway and watch the skyscrapers of Algonquin from the street. The dream is right there, but not for you.",
+    quote:"“So many lights in this city... and none of them for me.”",
+    reading:"Inequality: Liberty City is full of wealth, but not everyone gets a place in it."},
+  addicted:{mark:"Addicted",title:"Ending: Addicted",verdict:"Nightmare",color:"#f472b6",img:"images/end_addicted.jpg",
+    text:"At first it was just to forget the stress. Then it became every day, every night. You lose your money, your job and your friends. Roman tries to help you, but the way back is long and hard.",
+    quote:"“I told myself I could stop whenever I wanted.”",
+    reading:"Addiction can destroy any dream, and it often hits people who are alone and under pressure."},
+  secret:{mark:"Secret Ending",title:"Secret ending: Football Manager addiction",verdict:"Hidden ending",color:"#c084fc",img:"images/end_secret.jpg",secret:true,
+    text:"Your sports obsession reaches its peak when you abandon all criminal activities to play Football Manager 24/7. Roman finds you months later in a trance, surrounded by empty energy drink cans and notebooks full of tactical diagrams. You've created the perfect 4-4-2 formation but lost touch with reality. Roman sighs and brings you another energy drink.",
+    quote:"“Just one more match... I can stop anytime I want...”",
+    reading:"A hidden bonus ending: the dream replaced by an obsession. Very few players find it!"}
+};
+const endingIds = Object.keys(endings).filter(k => !endings[k].secret);
+
+/* ---------- STATE ---------- */
+const $ = id => document.getElementById(id);
+let current = 1, step = 1;
+let found = new Set();
+try { found = new Set(JSON.parse(localStorage.getItem('adsFound') || '[]').filter(k => endings[k])); } catch(e){}
+function saveFound(){ try { localStorage.setItem('adsFound', JSON.stringify([...found])); } catch(e){} }
+
+function foundHTML(){
+  const dots = endingIds.map(k => `<span class="${found.has(k)?'on':''}"></span>`).join('');
+  const n = endingIds.filter(k => found.has(k)).length;
+  const star = found.has('secret') ? '<span class="star">★ Secret found!</span>' : '';
+  return `<span>Endings found: <b>${n}/${endingIds.length}</b></span><span class="dots" aria-hidden="true">${dots}</span>${star}`;
+}
+function renderFound(){ $('foundIntro').innerHTML = foundHTML(); $('foundEnd').innerHTML = foundHTML(); }
+
+function restartAnim(el){ el.classList.remove('fade'); void el.offsetWidth; el.classList.add('fade'); }
+function bringIntoView(el){ el.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'}); }
+
+/* ---------- GAME ---------- */
+function startGame(){
+  $('intro').hidden = true; $('ending').hidden = true; $('game').hidden = false;
+  current = 1; step = 1; showQuestion(current);
+}
+function showQuestion(id){
+  const q = questions[id];
+  $('qText').textContent = q.text;
+  $('stepLabel').textContent = 'Choice ' + step;
+  $('barFill').style.width = Math.min(100, step * 18) + '%';
+  const box = $('options'); box.innerHTML = '';
+  q.options.forEach((o, i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'btn';
+    b.innerHTML = `<span class="letter">${'ABCD'[i]}</span><span></span>`;
+    b.lastChild.textContent = o.t;
+    b.addEventListener('click', () => choose(o.n));
+    box.appendChild(b);
+  });
+  restartAnim($('qCard'));
+  $('qText').focus({preventScroll:true});
+  bringIntoView($('game'));
+}
+function choose(next){
+  if (typeof next === 'number') { current = next; step++; showQuestion(current); }
+  else showEnding(next);
+}
+function showEnding(id){
+  const e = endings[id];
+  found.add(id); saveFound(); renderFound();
+  $('game').hidden = true; $('ending').hidden = false;
+  $('ending').style.setProperty('--c', e.color);
+  $('ending').classList.toggle('secret', !!e.secret);
+  $('endImg').src = e.img; $('endImg').alt = e.mark;
+  $('endTitle').textContent = e.title; $('endVerdict').textContent = e.verdict;
+  $('endText').textContent = e.text;
+  $('endQuote').textContent = e.quote;
+  $('endMark').textContent = e.mark;
+  $('endReading').textContent = e.reading;
+  restartAnim($('ending'));
+  bringIntoView($('ending'));
+}
+function restart(){ $('ending').hidden = true; startGame(); }
+
+$('startBtn').addEventListener('click', startGame);
+$('againBtn').addEventListener('click', restart);
+renderFound();
+</script>
+</body>
+</html>

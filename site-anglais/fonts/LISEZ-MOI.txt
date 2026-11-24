@@ -1,0 +1,3 @@
+Mets ici le fichier de la police Pricedown (celui du zip de dafont, en .otf ou .ttf)
+et renomme-le exactement : pricedown.otf  (ou pricedown.ttf)
+Si le fichier est absent, le site utilise la police en ligne, puis Impact.
